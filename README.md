@@ -1,5 +1,5 @@
 # DOWNLOAD THE INTERPRETER BINARY
-[binary](https://github.com/realabrarzahin/amarpl/blob/master/amarpl)
+[binary realease](https://github.com/realabrarzahin/amarpl/releases/download/v1.0.0/amarpl)
 
 Then use this command to run file at `path`:
 ```
