@@ -1,3 +1,16 @@
+# DOWNLOAD THE INTERPRETER BINARY
+[binary](https://github.com/realabrarzahin/amarpl/blob/master/amarpl)
+
+Then use this command to run file at `path`:
+```
+./amarpl path
+```
+
+Or, simple run this command to use our interpreter:
+```
+./amarpl
+```
+
 # VARIABLE DECLARATION
 
 ```
