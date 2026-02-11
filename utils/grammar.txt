@@ -1,0 +1,159 @@
+AMARPL
+----------------------------------------------------
+
+program
+    : declaration* EOF
+    ;
+
+declaration
+    : fun_dec
+    | var_dec
+    | statement
+    ;
+
+func_dec
+    : function
+    ;
+
+var_dec
+    : 'let' IDENTIFIER ("=" expression)?
+    ;
+
+statement
+    : expr_stmt
+    | for_stmt
+    | if_stmt
+    | display_stmt
+    | return_stmt
+    | while_stmt
+    | block
+    ;
+
+expr_stmt
+    : expression
+    ;
+
+for_stmt
+    : "for" "("
+        (var_dec | expression)? "done"
+        expression? "done"
+        expression?
+      ")"
+
+      declaration*
+
+      "done"
+    ;
+
+if_stmt
+    : "if" expression "then"
+        declaration* "done"
+        ("otherwise" declaration* "done")?
+    ;
+
+display_stmt
+    : "display" expression
+    ;
+
+return_stmt
+    : "return" expression | 'done'
+    ;
+
+while_stmt
+    : "while" expression "do"
+        declaration*
+      "done"
+    ;
+
+block
+    : "{" declaration* "}"
+    ;
+
+expression
+    : logic_or
+    ;
+
+assignment
+    : IDENTIFIER "=" expression
+    ;
+
+logic_or
+    : logic_and ("or" logic_and)*
+    ;
+
+logic_and
+    : equality ("and" equality)*
+    ;
+
+equality
+    : comparison (("!=" | "==") comparison)*
+    ;
+
+comparison
+    : term ((">" | ">=" | "<" | "<=") term)*
+    ;
+
+term
+    : factor (("-" | "+") factor)*
+    ;
+
+factor
+    : unary (("/" | "*") unary)*
+    ;
+
+unary
+    : ("!" | "-") unary
+    | call
+    ;
+
+call
+    : primary "(" arguments? ")"
+    ;
+
+primary
+    : "true"
+    | "false"
+    | "nil"
+    | NUMBER
+    | STRING
+    | IDENTIFIER
+    | "(" expression ")"
+    ;
+
+function
+    : "fn" IDENTIFIER
+      "(" parameters ")"
+      declaration*
+      "done"
+    ;
+
+parameters
+    : IDENTIFIER
+      ("," IDENTIFIER )*
+    ;
+
+arguments
+    : expression ("," expression)*
+    ;
+
+NUMBER
+    : DIGIT+ ("." DIGIT+)?
+    ;
+
+STRING
+    : "\"" <any char except "\"">* "\""
+    ;
+
+IDENTIFIER
+    : ALPHA (ALPHA | DIGIT)*
+    ;
+
+ALPHA
+    : "a" ... "z"
+    | "A" ... "Z"
+    | "_"
+    ;
+
+DIGIT
+    : "0" ... "9"
+    ;
