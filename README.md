@@ -10,7 +10,7 @@ Or, simple run this command to use our interpreter:
 ```
 ./amarpl
 ```
-# VARIABLE DECLARATION
+# COMMENT
 
 ```
 # Comment inline
