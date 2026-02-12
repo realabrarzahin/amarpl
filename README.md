@@ -6,7 +6,7 @@ Then use this command to run file at `path`:
 ./amarpl path
 ```
 
-Or, simple run this command to use our interpreter:
+Or, simply run this command to use our interpreter:
 ```
 ./amarpl
 ```
